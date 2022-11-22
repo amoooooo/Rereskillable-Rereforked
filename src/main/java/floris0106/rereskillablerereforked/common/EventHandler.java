@@ -20,6 +20,8 @@ import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -50,11 +52,12 @@ public class EventHandler
         }
     }
 
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onRegisterKeybindingsEvent(RegisterKeyMappingsEvent event){
         event.register(Keybind.openKey);
     }
-    
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event)
     {
@@ -68,7 +71,7 @@ public class EventHandler
             event.setCanceled(true);
         }
     }
-    
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onRightClickItem(PlayerInteractEvent.RightClickItem event)
     {
@@ -80,7 +83,7 @@ public class EventHandler
             event.setCanceled(true);
         }
     }
-    
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onRightClickEntity(PlayerInteractEvent.EntityInteract event)
     {
@@ -96,7 +99,7 @@ public class EventHandler
             }
         }
     }
-    
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onAttackEntity(AttackEntityEvent event)
     {
@@ -112,7 +115,7 @@ public class EventHandler
             }
         }
     }
-    
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onChangeEquipment(LivingEquipmentChangeEvent event)
     {
@@ -132,7 +135,7 @@ public class EventHandler
             }
         }
     }
-    
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onEntityDrops(LivingDropsEvent event)
     {
