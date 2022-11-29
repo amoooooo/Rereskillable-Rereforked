@@ -210,8 +210,10 @@ public class EventHandler
     @SubscribeEvent
     public void onPlayerClone(PlayerEvent.Clone event)
     {
+        event.getOriginal().reviveCaps();
         SkillModel.get(event.getEntity()).skillLevels = SkillModel.get(event.getOriginal()).skillLevels;
         event.getOriginal().getCapability(SkillCapability.INSTANCE).invalidate();
+        event.getOriginal().invalidateCaps();
     }
 
     @SubscribeEvent
